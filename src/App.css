@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+
+:root{
+  --background-color: rgb(18, 22, 48);
+  --secondary-background-color: rgb(26, 35, 78);
+  --gradient:radial-gradient(circle at 0% 50%,rgba(111, 174, 255, 1), rgba(34,162,255,1), rgba(19,111,235,1));
+  --grey-color: rgb(140, 149, 178);
+} 
+
+*{
+  box-sizing: border-box;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+}
+
+Body{
+  margin: 0;
+  background: var(--background-color);
+}
+
