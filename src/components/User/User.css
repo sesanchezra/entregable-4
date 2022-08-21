@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+
+:root{
+    --background-color: rgb(18, 22, 48);
+    --secondary-background-color: rgb(26, 35, 78);
+    --gradient:radial-gradient(circle at 0% 50%,rgba(111, 174, 255, 1), rgba(34,162,255,1), rgba(19,111,235,1));
+    --grey-color: rgb(140, 149, 178);
+    --blue-color: rgb(19,111,235);
+} 
+
+.User{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    color:white;
+    background: var(--secondary-background-color) ;
+    width: 310px;
+    height: 310px;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.User:hover{
+    transform: scale(1.05);
+    transition: 0.3s ease-in;
+}
+
+.User hr{
+    width: 95%;
+    opacity: 0.2;
+}
+
+.user__icon{
+    display: flex;
+    justify-content: center;
+    font-size: 120px;
+    color:var(--grey-color);
+}
+
+.user__info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.user__info h2,h4{
+    margin:0;
+}
+
+.user__info h2{
+    font-size: 16px;
+}
+
+.user__info h4{
+    font-size: 12px;
+}
+
+.user__birth{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 35px;
+}
+
+.user__birth h4{
+    font-size: 16px;
+}
+
+
+
+.user__buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.user__buttons .user__buttons__delete{
+    background-color: rgb(110, 115, 223);
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    font-size: 25px;
+    color: white;
+    box-shadow: 2px 2px 2px 0px rgb(110, 115, 223,0.3);
+}
+
+.user__buttons .user__buttons__edit{
+    background-color: rgb(19,111,235);
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    font-size: 25px;
+    color: white;
+    box-shadow: 2px 2px 2px 0px rgb(19,111,235,0.3);
+}
+
+.user__buttons .user__buttons__delete:hover , .user__buttons__edit:hover{
+    transform: scale(1.1);
+    transition: 0.2s ease-in ;
+}
+
+
+
