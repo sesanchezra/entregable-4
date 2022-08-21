@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap');
+
+
+:root{
+    --background-color: rgb(18, 22, 48);
+    --secondary-background-color: rgb(26, 35, 78);
+    --gradient:radial-gradient(circle at 0% 50%,rgb(79, 155, 255), rgb(6, 150, 253), rgb(9, 107, 236));
+    --grey-color: rgb(140, 149, 178);
+    --blue-color: rgb(19,111,235);
+    --button-filter-color: rgb(22, 26, 55);
+} 
+
+.Form{
+    width: 310px;
+    height: 350px;
+    background: var(--gradient);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0 10px 0;
+    border-radius: 20px;
+    position: absolute;
+    top: calc(100vh - 90vh);
+    left: auto;
+    right: auto;
+    bottom: auto;
+    z-index:2;
+    box-shadow: 0px 0px 30px 5px rgb(19,111,235,0.4);
+}
+
+
+.form__inputs{
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+}
+
+.form__inputs .input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;
+    gap: 10px;
+}
+
+.form__inputs .input input{
+    background-color: var(--gradient) ;
+    border: 1px solid rgb(255,255,255,0.2);
+    border-radius: 10px;
+    color: white;
+    padding: 2px;
+    
+}
+
+.form__button{
+    width: 120px;
+    height: 45px;
+    border-radius: 20px;
+    background-color: var(--blue-color);
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.form__button:hover{
+    transform:scale(1.05);
+    transition: 0.1s ease-in;
+}

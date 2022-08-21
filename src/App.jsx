@@ -3,12 +3,19 @@ import './App.css'
 import User from './components/User/User'
 import useGet from './hooks/useGet';
 import Logo from './assets/img/Entregable-4.png'
+import Form from './components/Form/Form';
+import Modal from './components/Modal/Modal';
 
 function App() {
+  const [modalState, setModalState] = useState(false)
 
   // Design Link: https://dribbble.com/shots/4647242-TNQ-Dashboard-Members-Page
 
   const { users } = useGet();
+
+  const showModal = () =>{
+    setModalState(!modalState)
+  }
 
   return (
     <div className="App">
@@ -17,7 +24,7 @@ function App() {
           <img src={Logo} alt="Logo" />
           <h1>USERS<span>.COM</span></h1>
         </div>
-        <button className='header__button'>Create New </button>
+        <button className='header__button' onClick={showModal}>Create New </button>
 
       </div>
       <div className='users__section__title'>
@@ -32,6 +39,10 @@ function App() {
         <button className='button__filter'>Sellers</button>
       </div>
       <div className='users__section'>
+        <div className={`${modalState}`}>
+          <Modal/>
+        </div>
+        
         {
           users?.map(user => (
             <User
