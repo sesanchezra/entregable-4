@@ -10,7 +10,6 @@ const useGet = () => {
         axios.get(URL)
         .then(res => setUsers(res.data))
         .catch(error => console.log(error))
-        
     }, [])
     
 

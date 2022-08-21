@@ -1,19 +1,40 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import User from './components/User/User'
-import useGet from './hooks/useGet';
 import Logo from './assets/img/Entregable-4.png'
-import Form from './components/Form/Form';
 import Modal from './components/Modal/Modal';
+import axios from 'axios';
 
 function App() {
   const [modalState, setModalState] = useState(false)
 
   // Design Link: https://dribbble.com/shots/4647242-TNQ-Dashboard-Members-Page
 
-  const { users } = useGet();
+  const [users, setUsers] = useState()
 
-  const showModal = () =>{
+  useEffect(() => {
+    useGet()
+  }, [])
+
+  const useGet = () => {
+    const URL = `https://users-crud1.herokuapp.com/users/`
+
+    axios.get(URL)
+      .then(res => setUsers(res.data))
+      .catch(error => console.log(error))
+
+  }
+
+  const usePost = (data) => {
+    const URL = `https://users-crud1.herokuapp.com/users/`
+
+    axios.post(URL, data)
+        .then(res => console.log(res.data))
+        .catch(error => console.log(error))
+        .finally(()=>useGet())
+}
+
+  const showModal = () => {
     setModalState(!modalState)
   }
 
@@ -40,9 +61,12 @@ function App() {
       </div>
       <div className='users__section'>
         <div className={`${modalState}`}>
-          <Modal/>
+          <Modal
+            usePost={usePost}
+            showModal={showModal}
+          />
         </div>
-        
+
         {
           users?.map(user => (
             <User

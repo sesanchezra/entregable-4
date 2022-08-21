@@ -2,10 +2,13 @@ import React from 'react'
 import Form from '../Form/Form'
 import '../Modal/Modal.css'
 
-const Modal = () => {
+const Modal = ({usePost,showModal}) => {
     return (
         <div className='Modal'>
-            <Form />
+            <Form
+                usePost={usePost}
+                showModal={showModal}
+            />
         </div>
     )
 }
