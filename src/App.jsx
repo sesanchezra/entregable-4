@@ -79,6 +79,7 @@ function App() {
             showModal={showModal}
             userUpdate={userUpdate}
             setUserUpdate={setUserUpdate}
+            useGet={useGet}
           />
         </div>
 

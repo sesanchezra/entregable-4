@@ -13,17 +13,33 @@ const defaultValue = {
     birthday: ''
 }
 
-const Form = ({ usePost, showModal, userUpdate, setUserUpdate }) => {
+const Form = ({ usePost, showModal, userUpdate, setUserUpdate , useGet}) => {
 
     const { register, handleSubmit, reset } = useForm();
 
     useEffect(() => {
-        
         if (userUpdate) {
             reset(userUpdate)
             showModal()
         }
+        else {
+            reset(defaultValue)
+        }
     }, [userUpdate])
+
+    const usePatch = data => {
+        const URL = `https://users-crud1.herokuapp.com/users/${userUpdate?.id}/`
+
+        axios.patch(URL,data)
+            .then(res => console.log(res.data))
+            .catch(error => console.log(error))
+            .finally(() => {
+                useGet()
+                showModal()
+                setUserUpdate()
+            })
+
+    }
 
     const closeModal = () => {
         showModal()
@@ -31,7 +47,7 @@ const Form = ({ usePost, showModal, userUpdate, setUserUpdate }) => {
     }
     const submit = (data) => {
         if (userUpdate) {
-            //Update
+            usePatch(data)
         }
         else {
             usePost(data)
