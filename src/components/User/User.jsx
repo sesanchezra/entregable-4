@@ -5,7 +5,11 @@ import { BsGiftFill } from "react-icons/bs";
 import { AiOutlineDelete } from "react-icons/ai";
 import { FiEdit2 } from "react-icons/fi";
 
-const User = ({user}) => {
+const User = ({user , useDelete , setUserUpdate}) => {
+
+    const editUser = (user) =>{
+        setUserUpdate(user)
+    }
     return (
         <div className='User'>
             <div className='user__icon'>
@@ -22,8 +26,8 @@ const User = ({user}) => {
             </div>
             <hr />
             <div className='user__buttons'>
-                <button className='user__buttons__delete'> <AiOutlineDelete /> </button>
-                <button className='user__buttons__edit'> <FiEdit2 /> </button>
+                <button className='user__buttons__delete' onClick={()=>useDelete(user.id)}> <AiOutlineDelete /> </button>
+                <button className='user__buttons__edit' onClick={()=> editUser(user)}> <FiEdit2 /> </button>
             </div>
 
 

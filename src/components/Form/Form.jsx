@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../Form/Form.css'
 import { useForm } from 'react-hook-form';
 import useGet from '../../hooks/useGet';
@@ -13,23 +13,48 @@ const defaultValue = {
     birthday: ''
 }
 
-const Form = ({ usePost , showModal }) => {
+const Form = ({ usePost, showModal, userUpdate, setUserUpdate }) => {
 
     const { register, handleSubmit, reset } = useForm();
 
+    useEffect(() => {
+        
+        if (userUpdate) {
+            reset(userUpdate)
+            showModal()
+        }
+    }, [userUpdate])
+
+    const closeModal = () => {
+        showModal()
+        setUserUpdate()
+    }
     const submit = (data) => {
-        usePost(data)
-        reset(defaultValue)
+        if (userUpdate) {
+            //Update
+        }
+        else {
+            usePost(data)
+            reset(defaultValue)
+            showModal()
+        }
+
     }
 
     return (
         <form className='Form' onSubmit={handleSubmit(submit)}>
-            <h2>New User</h2>
+            {
+                userUpdate ?
+                    <h2>Update user</h2>
+                    :
+                    <h2>New User</h2>
+            }
 
-            <button className='close__button' onClick={showModal}>
+
+            <a className='close__button' onClick={() => closeModal()}>
                 <AiOutlineClose />
-            </button>
-            
+            </a>
+
 
 
             <div className='form__inputs'>
@@ -55,7 +80,16 @@ const Form = ({ usePost , showModal }) => {
                 </div>
             </div>
 
-            <button className='form__button'>Create User</button>
+
+
+            <button className='form__button'>
+                {
+                    userUpdate ?
+                        `Update User`
+                        :
+                        `Create User`
+                }
+            </button>
 
         </form>
     )

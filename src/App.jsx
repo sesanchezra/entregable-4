@@ -12,6 +12,8 @@ function App() {
 
   const [users, setUsers] = useState()
 
+  const [userUpdate, setUserUpdate] = useState()
+
   useEffect(() => {
     useGet()
   }, [])
@@ -29,10 +31,21 @@ function App() {
     const URL = `https://users-crud1.herokuapp.com/users/`
 
     axios.post(URL, data)
-        .then(res => console.log(res.data))
-        .catch(error => console.log(error))
-        .finally(()=>useGet())
-}
+      .then(res => console.log(res.data))
+      .catch(error => console.log(error))
+      .finally(() => useGet())
+  }
+
+  const useDelete = (id) =>{
+
+    const URL=`https://users-crud1.herokuapp.com/users/${id}/`
+
+    axios.delete(URL)
+      .then(res => console.log(res.data))
+      .catch(error=> console.log(error))
+      .finally(()=> useGet())
+
+  }
 
   const showModal = () => {
     setModalState(!modalState)
@@ -64,6 +77,8 @@ function App() {
           <Modal
             usePost={usePost}
             showModal={showModal}
+            userUpdate={userUpdate}
+            setUserUpdate={setUserUpdate}
           />
         </div>
 
@@ -72,6 +87,8 @@ function App() {
             <User
               user={user}
               key={user.id}
+              useDelete={useDelete}
+              setUserUpdate={setUserUpdate}
             />
           ))
         }
